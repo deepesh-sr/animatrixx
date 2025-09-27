@@ -5,8 +5,8 @@ import { useEffect, useRef } from "react"
 
 const Agency = () => {
   gsap.registerPlugin(ScrollTrigger)
-  const imageDivRef = useRef(null);
-  const imageRef = useRef(null);
+  const imageDivRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
 
 const imageArray = [
 'https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg',
@@ -38,7 +38,9 @@ const imageArray = [
           let imageIndex ;
           if(element.progress < 14){
             imageIndex = Math.floor(element.progress * imageArray.length)
-            image.src = imageArray[imageIndex]
+            if (image) {
+              image.src = imageArray[imageIndex]
+            }
           }
           else{
             imageIndex = imageArray.length -1;
@@ -57,6 +59,7 @@ const imageArray = [
 
   return (
     <div>
+      <h1>Under production, regularly updating</h1>
       <div ref={imageDivRef} className="w-[19vw] absolute left-[30%] top-[40%]">
         <img ref={imageRef} className="w-full h-full rounded-3xl overflow-hidden" onLoad={()=>ScrollTrigger.refresh()} src=" https://k72.ca/images/teamMembers/Claire_640X960.jpg?w=640&h=960&s=8db7275995c2d79210fcf8641b5792fc" alt="image" />
       </div>

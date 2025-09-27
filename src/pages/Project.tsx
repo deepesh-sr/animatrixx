@@ -1,6 +1,7 @@
 const Project = () => {
   return (
-    <div>
+    <div className="h-screen w-full text-white flex justify-center items-center ">
+      underproduction
     </div>
   )
 }
